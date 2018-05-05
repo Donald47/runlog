@@ -8,10 +8,10 @@ services:
     ports:
       - "5432:5432"
   api:
-    build: .
+    build: ./api
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/runlog
+      - ./api:/api
     ports:
       - "3000:3000"
     depends_on:
