@@ -2,11 +2,11 @@
 #
 # Table name: atheletes
 #
-#  id                 :uuid             not null, primary key
-#  email              :string           not null
-#  encrypted_password :string           not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id              :uuid             not null, primary key
+#  email           :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_115034) do
 
   create_table "atheletes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "email", null: false
-    t.string "encrypted_password", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_atheletes_on_email", unique: true
