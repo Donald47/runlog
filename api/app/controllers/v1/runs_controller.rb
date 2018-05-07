@@ -1,4 +1,4 @@
-module v1
+module V1
   class RunsController < ApplicationController
     before_action :set_run, only: [:show, :update, :destroy]
 

@@ -1,4 +1,4 @@
-module v1
+module V1
   class AtheletesController < ApplicationController
     before_action :set_athelete, only: [:show, :update, :destroy]
 

@@ -4,7 +4,7 @@ import Config from './Config';
 const Authentication = {
   async login(email, password) {
     return await axios.post(
-      `${Config.baseUrl}${Config.baseVersion}`,
+      `${Config.baseUrl}${Config.baseVersion}sign_in`,
       { email, password }
     ).then((response) => {
       console.log(response);

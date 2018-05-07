@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::API
-  protect_from_forgery
+  before_action :require_auth
 
+  private
+
+  def require_auth
+
+  end
 end

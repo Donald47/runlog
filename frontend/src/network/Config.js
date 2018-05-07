@@ -1,5 +1,5 @@
 const Config = {
-  baseUrl: 'http://localhost:3000/api/',
+  baseUrl: 'http://localhost:3000/',
   baseVersion: 'v1/',
 }
 
