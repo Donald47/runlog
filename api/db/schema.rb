@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_115034) do
     t.decimal "calories_burned", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["athelete_id"], name: "index_runs_on_athelete_id", unique: true
+    t.index ["athelete_id"], name: "index_runs_on_athelete_id"
     t.index ["id"], name: "index_runs_on_id", unique: true
   end
 

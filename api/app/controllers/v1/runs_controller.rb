@@ -5,7 +5,6 @@ module V1
     # GET /runs
     def index
       @runs = @athelete.runs
-
       render json: @runs
     end
 
@@ -16,10 +15,15 @@ module V1
 
     # POST /runs
     def create
-      @run = Run.new(run_params)
-
+      run_params['distance_in_meters']
+      @run = Run.new({
+        athelete_id: @athelete.id,
+        distance_in_meters: run_params['distance_in_meters'],
+        time_in_seconds: run_params['time_in_seconds'],
+      })
       if @run.save
-        render json: @run, status: :created, location: @run
+        @runs = @athelete.runs
+        render json: @runs, status: :created
       else
         render json: @run.errors, status: :unprocessable_entity
       end
@@ -47,7 +51,7 @@ module V1
 
       # Only allow a trusted parameter "white list" through.
       def run_params
-        params.fetch(:run, {})
+        params.fetch(:run, {}).permit(:distance_in_meters, :time_in_seconds)
       end
   end
 end

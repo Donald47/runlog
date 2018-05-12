@@ -7,7 +7,7 @@ class CreateRuns < ActiveRecord::Migration[5.2]
       t.decimal :calories_burned, null: false
       t.timestamps
       t.index :id, unique: true, using: :btree
-      t.index :athelete_id, unique: true, using: :btree
+      t.index :athelete_id, using: :btree
     end
   end
 end

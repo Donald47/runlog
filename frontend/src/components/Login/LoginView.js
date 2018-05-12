@@ -31,6 +31,15 @@ class LoginView extends Component {
     };
   }
 
+  login = async () => {
+    const result = await Authentication.login(this.state.email, this.state.password);
+    if (result.status === 200) {
+      this.setState({loggedIn:true});
+    } else {
+      this.setState({errorMessage:result.message});
+    }
+  }
+
   render() {
     if (this.state.loggedIn) {
       return (<Redirect to='/runs' />)
@@ -54,19 +63,10 @@ class LoginView extends Component {
           />
           <br/>
           {this.state.errorMessage !== null && <div style={errorStyle}>{this.state.errorMessage}</div>}
-          <RaisedButton label="Submit" primary={true} style={buttonStyle} onClick={(event) => this.login(event)}/>
+          <RaisedButton label="Submit" primary={true} style={buttonStyle} onClick={this.login}/>
         </div>
       </div>
     );
-  }
-
-  async login(event) {
-    const result = await Authentication.login(this.state.email, this.state.password);
-    if (result.status === 200) {
-      this.setState({loggedIn:true});
-    } else {
-      this.setState({errorMessage:result.message});
-    }
   }
 }
 export default LoginView;

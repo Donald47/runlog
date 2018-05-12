@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_runs_on_athelete_id  (athelete_id) UNIQUE
+#  index_runs_on_athelete_id  (athelete_id)
 #  index_runs_on_id           (id) UNIQUE
 #
 
