@@ -3,27 +3,21 @@ import Config from './Config';
 
 const Authentication = {
 
-  token: null,
-
-  hasToken() {
-    if (this.token !== null) {
-      return true;
-    }
-    return false;
-  },
-
   async login(email, password) {
     const self = this;
     return await axios.post(
-      `${Config.baseUrl}${Config.baseVersion}sign_in`,
+      `${Config.baseUrl}${Config.baseVersion}/sign_in`,
       { email, password }
     ).then((response) => {
-      this.token = response.data.auth_token;
+      axios.defaults.headers.common['Authorization'] = response.data.auth_token;
+      self.hasToken = true;
       return {
         status: response.status,
       };
     }).catch((error) => {
       const response = error.response;
+      axios.defaults.headers.common['Authorization'] = null;
+      self.hasToken = false;
       return {
         status: response.status,
         message: response.data.message,

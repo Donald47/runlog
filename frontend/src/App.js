@@ -7,13 +7,18 @@ import Authentication from './network/Authentication';
 
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
-    Authentication.hasToken()
+    Authentication.hasToken
       ? <Component {...props} />
       : <Redirect to='/' />
   )} />
 )
 
 class App extends Component {
+
+  componentWillMount() {
+    document.title = 'RunLog'
+  }
+
   render() {
     return (
       <MuiThemeProvider>

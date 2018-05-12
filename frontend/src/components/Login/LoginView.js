@@ -6,16 +6,16 @@ import Authentication from '../../network/Authentication';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 const formStyle = {
-  width: 256,
+  width: '256px',
   marginLeft: '5%',
 };
 const buttonStyle = {
-  marginLeft: 15,
+  marginLeft: '15px',
 };
 const errorStyle = {
-  marginTop: 5,
-  marginBottom: 5,
-  paddingLeft: 15,
+  marginTop: '5px',
+  marginBottom: '5px',
+  paddingLeft: '15px',
   outlineStyle: 'solid',
   color: '#cc0000',
 };
@@ -24,8 +24,8 @@ class LoginView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'hello@test.com',
+      password: 'password',
       errorMessage: null,
       loggedIn: false,
     };
@@ -64,8 +64,9 @@ class LoginView extends Component {
     const result = await Authentication.login(this.state.email, this.state.password);
     if (result.status === 200) {
       this.setState({loggedIn:true});
+    } else {
+      this.setState({errorMessage:result.message});
     }
-    this.setState({errorMessage:result.message});
   }
 }
 export default LoginView;
