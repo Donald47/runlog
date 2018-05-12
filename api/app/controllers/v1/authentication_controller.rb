@@ -1,5 +1,5 @@
 module V1
-  class AuthenticationController < ApplicationController
+  class AuthenticationController < V1Controller
     skip_before_action :require_auth
 
     def create
@@ -7,7 +7,7 @@ module V1
       athelete = Athelete.find_by(email: params[:email])
       return render json: error_json, status: :unauthorized if athelete.nil?
       return render json: error_json, status: :unauthorized if athelete.authenticate(params[:password]) == false
-      token = Tokeniser.encode(athelete.id)
+      token = Tokeniser.encode(id: athelete.id)
       render json: { auth_token: token }, status: :ok
     rescue StandardError => e
       Rails.logger.error(e)
@@ -15,7 +15,7 @@ module V1
     end
 
     def destroy
-      
+
     end
   end
 end

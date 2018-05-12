@@ -1,10 +1,10 @@
 module V1
-  class RunsController < ApplicationController
+  class RunsController < V1Controller
     before_action :set_run, only: [:show, :update, :destroy]
 
     # GET /runs
     def index
-      @runs = Run.all
+      @runs = @athelete.runs
 
       render json: @runs
     end

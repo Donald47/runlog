@@ -1,5 +1,5 @@
 module V1
-  class AtheletesController < ApplicationController
+  class AtheletesController < V1Controller
     before_action :set_athelete, only: [:show, :update, :destroy]
 
     # GET /atheletes
