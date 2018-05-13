@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_115034) do
   create_table "atheletes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.decimal "mass_in_kg", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_atheletes_on_email", unique: true
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_115034) do
     t.uuid "athelete_id", null: false
     t.decimal "distance_in_meters", null: false
     t.decimal "time_in_seconds", null: false
-    t.decimal "calories_burned", null: false
+    t.decimal "kcal_minute", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["athelete_id"], name: "index_runs_on_athelete_id"

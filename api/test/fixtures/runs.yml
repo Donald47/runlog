@@ -3,8 +3,8 @@
 # Table name: runs
 #
 #  id                 :uuid             not null, primary key
-#  calories_burned    :decimal(, )      not null
 #  distance_in_meters :decimal(, )      not null
+#  kcal_minute        :decimal(, )      not null
 #  time_in_seconds    :decimal(, )      not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

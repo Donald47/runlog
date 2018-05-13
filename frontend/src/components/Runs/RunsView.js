@@ -67,7 +67,14 @@ class RunsView extends Component {
         loading: false,
       });
     } else {
-      this.setState({ runs: result.runs, loading: false });
+      this.setState({
+        runs: result.runs,
+        loading: false,
+        draftRun: {
+          distance_in_meters: 0.0,
+          time_in_seconds: 0.0,
+        },
+      });
     }
   }
 
@@ -131,9 +138,9 @@ class RunsView extends Component {
           <TableHeader>
             <TableRow>
               <TableHeaderColumn>Date</TableHeaderColumn>
-              <TableHeaderColumn>Distance</TableHeaderColumn>
-              <TableHeaderColumn>Time</TableHeaderColumn>
-              <TableHeaderColumn>Calories Burned</TableHeaderColumn>
+              <TableHeaderColumn>Distance in meters</TableHeaderColumn>
+              <TableHeaderColumn>Time in seconds</TableHeaderColumn>
+              <TableHeaderColumn>Calories Burned (Kcal/Minute)</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -142,7 +149,7 @@ class RunsView extends Component {
               <TableRowColumn>{run.created_at}</TableRowColumn>
               <TableRowColumn>{run.distance_in_meters}</TableRowColumn>
               <TableRowColumn>{run.time_in_seconds}</TableRowColumn>
-              <TableRowColumn>{run.calories_burned}</TableRowColumn>
+              <TableRowColumn>{run.kcal_minute}</TableRowColumn>
             </TableRow>
           ))}
           </TableBody>

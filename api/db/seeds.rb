@@ -9,5 +9,5 @@
 Athelete.destroy_all
 Run.destroy_all
 
-athlete = Athelete.create(email: "hello@test.com", password: "password")
-Run.create!(calories_burned: 0, distance_in_meters: 0, time_in_seconds: 0,  athelete_id: athlete.id)
+athlete = Athelete.create!(email: "hello@test.com", password: "password", mass_in_kg: 84.0)
+Run.create!(distance_in_meters: 100, time_in_seconds: 10.18,  athelete_id: athlete.id)
