@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { PulseLoader } from 'react-spinners'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Runs from '../../network/Runs';
 
 const buttonStyle = {
@@ -32,6 +32,10 @@ class RunsView extends Component {
         distance_in_meters: 0.0,
         time_in_seconds: 0.0,
       },
+      runErrors: {
+        distance_in_meters: null,
+        time_in_seconds: null,
+      },
       runs: [],
     };
   }
@@ -42,6 +46,7 @@ class RunsView extends Component {
       this.setState({
         loggedIn,
         errorMessage: result.message,
+        loading: false,
       });
     } else {
       this.setState({ runs: result.runs, loading: false });
@@ -59,14 +64,7 @@ class RunsView extends Component {
   addNewRun = async () => {
     this.setState({ loading: true });
     const result = await Runs.post(this.state.draftRun);
-    if (result.status !== 201) {
-      const loggedIn = result.status === 401 ? false : true;
-      this.setState({
-        loggedIn,
-        errorMessage: result.message,
-        loading: false,
-      });
-    } else {
+    if (result.status === 201) {
       this.setState({
         runs: result.runs,
         loading: false,
@@ -74,8 +72,33 @@ class RunsView extends Component {
           distance_in_meters: 0.0,
           time_in_seconds: 0.0,
         },
+        runErrors: {
+          distance_in_meters: null,
+          time_in_seconds: null,
+        },
       });
+      return;
     }
+    if (result.status === 401) {
+      this.setState({
+        loggedIn: false,
+        loading: false,
+      });
+      return;
+    }
+    if (result.status === 422) {
+      this.setState({
+        runErrors: result.message,
+        errorMessage: 'Invalid Input',
+        loading: false,
+      });
+      return;
+    }
+    this.setState({
+      runErrors: this.state.runErrors,
+      errorMessage: result.message,
+      loading: false,
+    });
   }
 
   renderInputBlock = () => {
@@ -94,6 +117,7 @@ class RunsView extends Component {
             floatingLabelFixed={true}
             type="number"
             style={inputStyle}
+            errorText={this.state.runErrors.distance_in_meters}
             onChange={(event,newValue) => {
               this.setState({draftRun:{
                 distance_in_meters: newValue,
@@ -107,6 +131,7 @@ class RunsView extends Component {
             floatingLabelFixed={true}
             type="number"
             style={inputStyle}
+            errorText={this.state.runErrors.time_in_seconds}
             onChange={(event,newValue) => {
               this.setState({draftRun:{
                 distance_in_meters:  this.state.draftRun.distance_in_meters,

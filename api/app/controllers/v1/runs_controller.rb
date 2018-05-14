@@ -4,11 +4,11 @@ module V1
 
     # GET /runs
     def index
-      @runs = @athelete.runs
+      @runs = @athelete.runs.order(created_at: :desc)
       render json: @runs
     end
 
-    # GET /runs/1
+    # GET /runs/:id
     def show
       render json: @run
     end
@@ -22,14 +22,14 @@ module V1
         time_in_seconds: run_params['time_in_seconds'],
       })
       if @run.save
-        @runs = @athelete.runs
+        @runs = @athelete.runs.order(created_at: :desc)
         render json: @runs, status: :created
       else
         render json: @run.errors, status: :unprocessable_entity
       end
     end
 
-    # PATCH/PUT /runs/1
+    # PATCH/PUT /runs/:id
     def update
       if @run.update(run_params)
         render json: @run
@@ -38,7 +38,7 @@ module V1
       end
     end
 
-    # DELETE /runs/1
+    # DELETE /runs/:id
     def destroy
       @run.destroy
     end

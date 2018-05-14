@@ -32,7 +32,7 @@ const Runs = {
       const response = error.response;
       return {
         status: response.status,
-        message: response.data.message,
+        message: response.data,
       };
     });
   }

@@ -22,7 +22,7 @@ class Run < ApplicationRecord
 
   validates :distance_in_meters, :numericality => { :greater_than => 0 }
   validates :time_in_seconds, :numericality => { :greater_than => 0 }
-  after_validation_on_create :compute_calories
+  after_validation :compute_calories, on: :create
 
   def compute_calories
     athelete = Athelete.find(self.athelete_id) # Use id fetch because are pre-save

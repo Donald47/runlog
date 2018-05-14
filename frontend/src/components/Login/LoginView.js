@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Authentication from '../../network/Authentication';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const formStyle = {
   width: '256px',
