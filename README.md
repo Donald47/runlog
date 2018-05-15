@@ -36,8 +36,19 @@ Create migrate and populate the database (Use a new terminal)
 docker-compose run api rake db:create db:migrate db:seed
 ```
 
-API avalable on localhost:3000 views on localhost:4000
-Test user details:
+#####API
+
+```
+localhost:3000
+```
+
+#####Frontend
+
+```
+localhost:3000
+```
+
+#####Test user details
 
 ```
 hello@test.com
@@ -51,5 +62,9 @@ docker-compose down
 ```
 
 ## Running the tests
+
+#####API
+
+#####Frontend
 
 TODO.
