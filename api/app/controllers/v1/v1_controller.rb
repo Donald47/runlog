@@ -8,7 +8,10 @@ module V1
       response_json = { message: 'Not Authorised' };
       token = Tokeniser.decode(request.headers['Authorization'])
       @athelete = Athelete.find(token['id'])
-      render json: response_json, status: :unauthorized unless @athelete.present?
+      throw 'Athelete not present' unless @athelete.present?
+    rescue StandardError => e
+      Rails.logger.error(e)
+      render json: response_json, status: :unauthorized
     end
   end
 end

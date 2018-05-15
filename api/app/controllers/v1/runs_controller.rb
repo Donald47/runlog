@@ -8,11 +8,6 @@ module V1
       render json: @runs
     end
 
-    # GET /runs/:id
-    def show
-      render json: @run
-    end
-
     # POST /runs
     def create
       run_params['distance_in_meters']
@@ -27,20 +22,6 @@ module V1
       else
         render json: @run.errors, status: :unprocessable_entity
       end
-    end
-
-    # PATCH/PUT /runs/:id
-    def update
-      if @run.update(run_params)
-        render json: @run
-      else
-        render json: @run.errors, status: :unprocessable_entity
-      end
-    end
-
-    # DELETE /runs/:id
-    def destroy
-      @run.destroy
     end
 
     private

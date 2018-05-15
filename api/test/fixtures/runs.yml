@@ -26,12 +26,12 @@ one:
   distance_in_meters: 100
   kcal_minute: 46.6
   time_in_seconds: 10.20
-  athelete: one_test
+  athelete: one
 # column: value
 #
 two:
   distance_in_meters: 50
   kcal_minute: 23.3
   time_in_seconds: 10.20
-  athelete: two_test
+  athelete: two
 # column: value
