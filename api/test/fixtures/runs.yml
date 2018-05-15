@@ -22,8 +22,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  distance_in_meters: 100
+  kcal_minute: 46.6
+  time_in_seconds: 10.20
+  athelete: one_test
 # column: value
 #
-two: {}
+two:
+  distance_in_meters: 50
+  kcal_minute: 23.3
+  time_in_seconds: 10.20
+  athelete: two_test
 # column: value

@@ -30,7 +30,7 @@ Spin them up.
 docker-compose up
 ```
 
-Create migrate and populate the database (Use a new terminal)
+Create migrate and populate the database
 
 ```
 docker-compose run api rake db:create db:migrate db:seed
@@ -64,6 +64,10 @@ docker-compose down
 ## Running the tests
 
 #####API
+
+```
+docker-compose run api bin/rails test
+```
 
 #####Frontend
 

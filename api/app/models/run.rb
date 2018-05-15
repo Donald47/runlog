@@ -18,7 +18,7 @@
 
 class Run < ApplicationRecord
 
-  has_one :athelete
+  belongs_to :athelete
 
   validates :distance_in_meters, :numericality => { :greater_than => 0 }
   validates :time_in_seconds, :numericality => { :greater_than => 0 }
