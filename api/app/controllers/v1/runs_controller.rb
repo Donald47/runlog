@@ -12,7 +12,7 @@ module V1
     def create
       run_params['distance_in_meters']
       @run = Run.new({
-        athelete_id: @athelete.id,
+        athelete: @athelete,
         distance_in_meters: run_params['distance_in_meters'],
         time_in_seconds: run_params['time_in_seconds'],
       })

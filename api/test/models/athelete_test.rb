@@ -18,7 +18,11 @@
 require 'test_helper'
 
 class AtheleteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should validate email" do
+
+  end
+
+  test "should validate mass_in_kg" do
+
+  end
 end

@@ -17,5 +17,10 @@
 
 class Athelete < ApplicationRecord
   has_secure_password
+
   has_many :runs, dependent: :destroy
+
+  validates :email, presence: true
+  validates :mass_in_kg, numericality: true
+
 end

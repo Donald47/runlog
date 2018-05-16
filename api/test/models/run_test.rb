@@ -19,7 +19,19 @@
 require 'test_helper'
 
 class RunTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should validate distance" do
+
+  end
+
+  test "should validate time" do
+
+  end
+
+  test "should validate athelete_id" do
+
+  end
+
+  test "should auto populate kcal_minute" do
+
+  end
 end
