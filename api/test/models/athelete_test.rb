@@ -18,7 +18,9 @@
 require 'test_helper'
 
 class AtheleteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should validate password email and mass_in_kg" do
+    athelete = Athelete.new
+    assert_not athelete.valid?
+    assert_equal [:password, :email, :mass_in_kg], athelete.errors.keys
+  end
 end

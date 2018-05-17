@@ -21,13 +21,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one_test:
+one:
   email: one@test.com
   mass_in_kg: 80
   password_digest: <%= BCrypt::Password.create('password') %>
 # column: value
 #
-two_test:
+two:
   email: two@test.com
   mass_in_kg: 85
   password_digest: <%= BCrypt::Password.create('password') %>

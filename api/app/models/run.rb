@@ -18,15 +18,16 @@
 
 class Run < ApplicationRecord
 
-  belongs_to :athelete
+  belongs_to :athelete, inverse_of: :runs, required: true
 
   validates :distance_in_meters, :numericality => { :greater_than => 0 }
   validates :time_in_seconds, :numericality => { :greater_than => 0 }
-  after_validation :compute_calories, on: :create
+
+  before_save :compute_calories, on: :create
 
   def compute_calories
-    athelete = Athelete.find(self.athelete_id) # Use id fetch because are pre-save
+    athelete = Athelete.find(self.athelete_id) # Use id fetch because we are pre-save
     self.kcal_minute = CalorieCalculator.calculate(self.distance_in_meters, self.time_in_seconds, athelete.mass_in_kg)
-    self.save unless self.new_record?
+    self.save unless self.new_record? # Autosave unless we've not been saved before.
   end
 end

@@ -17,5 +17,10 @@
 
 class Athelete < ApplicationRecord
   has_secure_password
-  has_many :runs, dependent: :destroy
+
+  has_many :runs, inverse_of: :athelete, dependent: :destroy
+
+  validates :email, presence: true
+  validates :mass_in_kg, numericality: true
+
 end

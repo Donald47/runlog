@@ -19,7 +19,20 @@
 require 'test_helper'
 
 class RunTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  setup do
+    @athelete = atheletes(:one)
+  end
+
+  test "should validate distance time and athelete" do
+    run = Run.new
+    assert_not run.valid?
+    assert_equal [:athelete, :distance_in_meters, :time_in_seconds], run.errors.keys
+  end
+
+  test "should auto populate kcal_minute" do
+    run = Run.create!(distance_in_meters: 100, time_in_seconds: 10.18,  athelete: @athelete)
+    assert run.errors.empty?
+    assert run.kcal_minute.present?
+  end
 end
