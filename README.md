@@ -24,6 +24,22 @@ Build the images.
 docker-compose build
 ```
 
+Node Packages.
+Due to how docker compose volume linking works and the requirements for Cypress integration testing there are two options.
+
+To install the packages via the docker image.
+```
+docker-compose run frontend npm install --only=production
+```
+This allows running the app without installing npm locally.
+
+Install locally.
+```
+cd frontend && npm install && cd ..
+```
+This allows running the cypress tests against the frontend.
+Note only certain operating systems support cypress.
+
 Spin them up.
 
 ```
@@ -71,4 +87,12 @@ docker-compose run api bin/rails test
 
 #####Frontend
 
-TODO.
+While the development environemnt is running.
+```
+docker-compose up
+```
+In a new terminal environment start the cypress test suite.
+
+```
+frontend/node_modules/.bin/cypress open
+```
