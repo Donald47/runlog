@@ -24,7 +24,8 @@ Build the images.
 docker-compose build
 ```
 
-Node Packages.
+### Node Packages.
+
 Due to how docker compose volume linking works and the requirements for Cypress integration testing there are two options.
 
 To install the packages via the docker image.
@@ -40,31 +41,31 @@ cd frontend && npm install && cd ..
 This allows running the cypress tests against the frontend.
 Note only certain operating systems support cypress and it may require some additional installs.
 
-Spin them up.
-
-```
-docker-compose up
-```
-
 Create migrate and populate the database
 
 ```
 docker-compose run api rake db:create db:migrate db:seed
 ```
 
-#####API
+Spin everything up
+
+```
+docker-compose up
+```
+
+### API
 
 ```
 localhost:3000
 ```
 
-#####Frontend
+### Frontend
 
 ```
 localhost:3000
 ```
 
-#####Test user details
+### Test user details
 
 ```
 hello@test.com
@@ -79,13 +80,13 @@ docker-compose down
 
 ## Running the tests
 
-#####API
+### API
 
 ```
 docker-compose run api bin/rails test
 ```
 
-#####Frontend
+### Frontend
 
 ```
 docker-compose run rake db:seed
