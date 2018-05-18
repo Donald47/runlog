@@ -38,7 +38,7 @@ Install locally.
 cd frontend && npm install && cd ..
 ```
 This allows running the cypress tests against the frontend.
-Note only certain operating systems support cypress.
+Note only certain operating systems support cypress and it may require some additional installs.
 
 Spin them up.
 
@@ -87,11 +87,13 @@ docker-compose run api bin/rails test
 
 #####Frontend
 
-While the development environemnt is running.
 ```
+docker-compose run rake db:seed
 docker-compose up
 ```
-In a new terminal environment start the cypress test suite.
+
+While the development environment is running.
+In a new terminal environment start the cypress test suite assuming you installed it.
 
 ```
 frontend/node_modules/.bin/cypress open
