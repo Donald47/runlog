@@ -76,6 +76,7 @@ class RunsView extends Component {
           distance_in_meters: null,
           time_in_seconds: null,
         },
+        errorMessage: null
       });
       return;
     }
@@ -107,11 +108,12 @@ class RunsView extends Component {
       width: "150px",
     };
     if (this.state.showInputs === false) {
-      return (<RaisedButton label="Add Run" primary={true} style={buttonStyle} onClick={this.showInputs}/>);
+      return (<RaisedButton className="addrun" label="Add Run" primary={true} style={buttonStyle} onClick={this.showInputs}/>);
     } else {
       return (
         <div>
           <TextField
+            className="distancefield"
             hintText="Distance"
             floatingLabelText="Distance in meters"
             floatingLabelFixed={true}
@@ -126,6 +128,7 @@ class RunsView extends Component {
             }}
           />
           <TextField
+            className="timefield"
             hintText="Time"
             floatingLabelText="Time in seconds"
             floatingLabelFixed={true}
@@ -139,8 +142,8 @@ class RunsView extends Component {
               }})
             }}
           />
-          <RaisedButton label="Add" primary={true} style={buttonStyle} onClick={this.addNewRun}/>
-          <RaisedButton label="Cancel" primary={true} style={buttonStyle} onClick={this.hideInputs}/>
+          <RaisedButton className="addrun" label="Add" primary={true} style={buttonStyle} onClick={this.addNewRun}/>
+          <RaisedButton className="cancelrun" label="Cancel" primary={true} style={buttonStyle} onClick={this.hideInputs}/>
         </div>
       );
     }
@@ -170,7 +173,7 @@ class RunsView extends Component {
           </TableHeader>
           <TableBody>
           {runs.map((run, index) => (
-            <TableRow key={index}>
+            <TableRow className="runrow" key={index}>
               <TableRowColumn>{run.created_at}</TableRowColumn>
               <TableRowColumn>{run.distance_in_meters}</TableRowColumn>
               <TableRowColumn>{run.time_in_seconds}</TableRowColumn>

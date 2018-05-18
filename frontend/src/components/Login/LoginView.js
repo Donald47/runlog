@@ -24,8 +24,8 @@ class LoginView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email: 'hello@test.com',
-      password: 'password',
+      email: '',
+      password: '',
       errorMessage: null,
       loggedIn: false,
     };
@@ -49,13 +49,14 @@ class LoginView extends Component {
         <AppBar title="Login" showMenuIconButton={false} />
         <div style={formStyle}>
           <TextField
+            className="emailfield"
             hintText="Enter your Email"
             floatingLabelText="Email"
             onChange = {(event,newValue) => this.setState({email:newValue})}
           />
           <br/>
           <TextField
-            className="LoginField"
+            className="passwordfield"
             type="password"
             hintText="Enter your Password"
             floatingLabelText="Password"
@@ -63,7 +64,7 @@ class LoginView extends Component {
           />
           <br/>
           {this.state.errorMessage !== null && <div style={errorStyle}>{this.state.errorMessage}</div>}
-          <RaisedButton label="Submit" primary={true} style={buttonStyle} onClick={this.login}/>
+          <RaisedButton className="submitbutton" label="Submit" primary={true} style={buttonStyle} onClick={this.login}/>
         </div>
       </div>
     );
